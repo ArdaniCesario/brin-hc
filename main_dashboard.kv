@@ -1,0 +1,341 @@
+#:kivy 2.1.0
+
+<SensorNamePlate>:
+    padding: 3
+    spacing: 0
+    size_hint: None, None
+    size: 100, 100
+
+    m__sensor_title: __sensor_title.__self__
+    m__sensor_value: __sensor_value.__self__
+    m__sensor_eu: __sensor_eu.__self__
+
+    canvas:
+        Color:
+            rgba: 0.25, 0.25, 0.25, 0.75
+        Rectangle:
+            size: self.size
+
+    Label:
+        id: __sensor_title
+        text: ''
+        font_size: 16
+        size_hint: None, None
+        size: self.texture_size
+        color: 0.0, 0.0, 0.0, 1
+        halign: 'left'
+        valign: 'middle'
+        pos_hint: {"x":0.05, "top":1}
+
+    Label:
+        id: __sensor_value
+        text: '99'
+        font_size: 48
+        #font_name: 'font/Digital_tech.otf'
+        size_hint: None, None
+        size: self.texture_size
+        color: 0.75, 0.75, 0.75, 1
+        halign: 'center'
+        valign: 'middle'
+        pos: root.width/2. - self.width/2., root.height/2. - self.height/2.
+        
+
+    Label:
+        id: __sensor_eu
+        text: ''
+        font_size: 22
+        size_hint: None, None
+        size: self.texture_size
+        color: 0.0, 0.0, 0.0, 1
+        halign: 'right'
+        valign: 'middle'
+        pos: root.width - self.width - 5, 0
+
+<DigitalIndicator>:
+    padding: 3
+    spacing: 0
+    size_hint: None, None
+    size: 140, 100
+
+    m__title: __title.__self__
+
+    canvas:
+        Color:
+            rgba: 0.25, 0.25, 0.25, 0.75
+        Rectangle:
+            size: self.size
+
+    Label:
+        id: __title
+        text: 'TITLE'
+        font_size: 36
+        font_name: 'font/CaptainMarvel.otf'
+        size_hint: None, None
+        size: self.texture_size
+        color: 0.35, 0.35, 0.35, 1
+        halign: 'center'
+        valign: 'middle'
+        pos: root.width/2. - self.width/2., root.height/2. - self.height/2.
+
+<Photo_Box>:
+    BoxLayout:
+        orientation: "vertical"
+        
+        Image:
+            id: imageView
+            source: '<random_name>.jpg'
+            allow_stretch: True
+
+<Dashboard>:
+    size_hint:  None, None
+    size: 1280, 720
+
+    m__txt_date: __txt_date.__self__
+    m__txt_time: __txt_time.__self__
+    m__sensor_o2: __sensor_o2.__self__
+    m__sensor_co2: __sensor_co2.__self__
+    m__sensor_n: __sensor_n.__self__
+    m__sensor_c2h4: __sensor_c2h4.__self__
+    m__sensor_m: __sensor_m.__self__
+    
+    m__sensor_temp_0: __sensor_temp_0.__self__
+    m__sensor_humidity_0: __sensor_humidity_0.__self__
+    m__sensor_temp_4: __sensor_temp_4.__self__
+    m__sensor_humidity_4: __sensor_humidity_4.__self__
+    m__sensor_temp_5: __sensor_temp_5.__self__
+    m__sensor_humidity_5: __sensor_humidity_5.__self__
+    m__sensor_temp_6: __sensor_temp_6.__self__
+    m__sensor_humidity_6: __sensor_humidity_6.__self__
+    m__sensor_temp_7: __sensor_temp_7.__self__
+    m__sensor_humidity_7: __sensor_humidity_7.__self__
+    
+    m__cooling: __cooling.__self__
+    m__led: __led.__self__
+    m__indicator1: __indicator1.__self__
+    m__indicator2: __indicator2.__self__
+    m__indicator3: __indicator3.__self__
+    m__indicator4: __indicator4.__self__
+    m__indicator5: __indicator5.__self__
+    m__exit: __exit.__self__
+
+    canvas:
+        Color:
+            rgba: 0.1, 0.1, 0.1, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+    Image:
+        id: __logo_brin
+        source: 'images/Logo_BRIN.png'
+        size_hint: None, None
+        size: 150, 57
+        y: root.height - self.height - 30
+        x: 50
+
+    Image:
+        id: __logo_sith
+        source: 'images/Logo_SITH_ITB.png'
+        size_hint: None, None
+        size: 250, 53
+        y: __logo_brin.y - __logo_brin.height/2. + self.height/2. + 5
+        x: __logo_brin.x + __logo_brin.width + 30
+
+    Label:
+        text: 'Smart Preservation Box'
+        font_size: 32
+        font_name: 'font/CaptainMarvel.otf'
+        color: 0.25, 0.25, 0.25, 0.5
+        size_hint: None, None
+        size: self.texture_size
+        halign: 'right'
+        valign: 'middle'
+        pos: __logo_sith.x + __logo_sith.width + 15, __logo_sith.y + 10
+
+    Label:
+        id: __txt_date
+        text: 'dd mm yyyy'
+        font_size: 16
+        font_name: 'font/CaptainMarvel.otf'
+        color: 0.75, 0.25, 0.25, 0.75
+        size_hint: None, None
+        size: self.texture_size
+        halign: 'left'
+        valign: 'middle'
+        pos: 50 + 10, __logo_brin.y - 20 - self.height
+
+    Label:
+        id: __txt_time
+        text: 'hh mm ss'
+        font_size: 56
+        font_name: 'font/CaptainMarvel.otf'
+        color: 0.75, 0.25, 0.25, 0.75
+        size_hint: None, None
+        size: self.texture_size
+        halign: 'left'
+        valign: 'middle'
+        pos: 50 + 10, __txt_date.y - 2 - self.height
+
+    SensorNamePlate:
+        id: __sensor_o2
+        pos: __sensor_m.x + __sensor_m.width + 7.5, __fan_control.y
+
+    SensorNamePlate:
+        id: __sensor_co2
+        pos: __sensor_o2.x + __sensor_o2.width + 7.5, __fan_control.y
+        
+    SensorNamePlate:
+        id: __sensor_n
+        pos: __sensor_co2.x + __sensor_co2.width + 7.5, __fan_control.y
+
+    SensorNamePlate:
+        id: __sensor_c2h4
+        pos: __sensor_n.x + __sensor_n.width + 7.5, __fan_control.y
+
+    SensorNamePlate:
+        id: __sensor_m
+        pos: 692.5, __fan_control.y
+
+    SensorNamePlate:
+        id: __sensor_temp_0
+        pos: 50, __fan_control.y + __fan_control.height + 5
+
+    SensorNamePlate:
+        id: __sensor_humidity_0
+        pos: __sensor_temp_0.x + __sensor_temp_0.width + 5, __sensor_temp_0.y
+    
+    SensorNamePlate:
+        id: __sensor_temp_4
+        pos: __fan_control.x + __fan_control.width + 5, __fan_control.y + 105
+
+    SensorNamePlate:
+        id: __sensor_humidity_4
+        pos: __sensor_temp_4.x + __sensor_temp_4.width + 5, __fan_control.y + 105    
+    
+    SensorNamePlate:
+        id: __sensor_temp_5
+        pos: __fan_control.x + __fan_control.width + 5, __fan_control.y
+
+    SensorNamePlate:
+        id: __sensor_humidity_5
+        pos: __sensor_temp_4.x + __sensor_temp_4.width + 5, __fan_control.y 
+    
+    SensorNamePlate:
+        id: __sensor_temp_6
+        pos: __sensor_humidity_0.x + __sensor_humidity_0.width + 5, __sensor_temp_0.y
+
+    SensorNamePlate:
+        id: __sensor_humidity_6
+        pos: __sensor_temp_6.x + __sensor_temp_6.width + 5, __sensor_temp_0.y
+        
+    SensorNamePlate:
+        id: __sensor_temp_7
+        pos: __sensor_humidity_6.x + __sensor_humidity_6.width + 5, __sensor_temp_0.y
+
+    SensorNamePlate:
+        id: __sensor_humidity_7
+        pos: __sensor_temp_7.x + __sensor_temp_7.width + 5, __sensor_temp_0.y
+    
+    FloatLayout:
+        id: __fan_control
+        padding: 3
+        spacing: 0
+        size_hint: None, None
+        size: 415, 205
+        pos: 50, 200
+
+        canvas:
+            Color:
+                rgba: 0.25, 0.25, 0.25, 0.75
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        
+        Label:
+            text: 'Fan Control'
+            font_size: 18
+            font_name: 'font/CaptainMarvel.otf'
+            color: 0.75, 0.75, 0.75, 1
+            size_hint: None, None
+            size: self.texture_size
+            halign: 'left'
+            valign: 'middle'
+            pos: self.parent.x + 20, self.parent.y + self.parent.height - self.height - 15
+        
+        Label:
+            text: 'Inlet '
+            font_size: 16
+            size_hint: None, None
+            size: self.texture_size
+            halign: 'left'
+            valign: 'middle'
+            pos: self.parent.x + 20, self.parent.y + self.parent.height - 60
+
+        Slider:
+            id: __slider_inlet
+            min: 0
+            max: 100
+            step: .5
+            size_hint: None, None
+            size: 385, 40
+            orientation: 'horizontal'
+            pos: __fan_control.x + 20, __fan_control.y + __fan_control.height - 100
+            on_value: root._update_pwm_inlet(self.value)
+            
+        Label:
+            text: 'Outlet'
+            font_size: 16
+            size_hint: None, None
+            size: self.texture_size
+            halign: 'left'
+            valign: 'middle'
+            pos: __fan_control.x + 20, __fan_control.y + __fan_control.height - 150
+
+        Slider:
+            id: __slider_outlet
+            min: 0
+            max: 100
+            step: .5
+            size_hint: None, None
+            size: 385, 40
+            orientation: 'horizontal'
+            pos: __fan_control.x + 20, __fan_control.y + __fan_control.height - 190
+            on_value: root._update_pwm_outlet(self.value)
+            
+    DigitalIndicator:
+        id: __cooling
+        pos: 50, 40
+        on_press: root._btn_press1()
+
+    DigitalIndicator:
+        id: __led
+        pos: __cooling.x + __cooling.width + 7.5, __cooling.y
+        on_press: root._btn_press2()
+        
+    DigitalIndicator:
+        id: __indicator1
+        pos: __led.x + __led.width + 7.5, __cooling.y
+        on_press: root._btn_press3()
+        
+    DigitalIndicator:
+        id: __indicator2
+        pos: __indicator1.x + __indicator1.width + 7.5, __cooling.y
+        on_press: root._btn_press4()    
+    
+    DigitalIndicator:
+        id: __indicator3
+        pos: __indicator2.x + __indicator2.width + 7.5, __cooling.y
+        on_press: root._btn_press5()
+    
+    DigitalIndicator:
+        id: __indicator4
+        pos: __indicator3.x + __indicator3.width + 7.5, __cooling.y
+
+    DigitalIndicator:
+        id: __indicator5
+        pos: __indicator4.x + __indicator4.width + 7.5, __cooling.y
+
+    DigitalIndicator:
+        id: __exit
+        pos: __indicator5.x + __indicator5.width + 7.5, __cooling.y
+        on_press: root._btn_press8()
